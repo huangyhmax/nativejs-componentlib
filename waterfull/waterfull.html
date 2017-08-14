@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../jQuery/jquery-3.2.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="./waterfull.css">
+    <title>瀑布流布局</title>
+</head>
+<body>
+    <div id="pics">
+        <ul class="container">
+            <li class="item h0"><a href="#"></li>
+            <li class="item h2"><a href="#"></li>
+            <li class="item h1"><a href="#"></li>
+            <li class="item h3"><a href="#"></li>
+            <li class="item h1"><a href="#"></li>
+            <li class="item h2"><a href="#"></li>
+            <li class="item h3"><a href="#"></li>
+            <li class="item h3"><a href="#"></li>
+            <li class="item h1"><a href="#"></li>
+            <li class="item h1"><a href="#"></li>
+            <li class="item h2"><a href="#"></li>
+            <li class="item h0"><a href="#"></li>
+            <li class="item h1"><a href="#"></li>
+            <li class="item h2"><a href="#"></li>
+            <li class="item h3"><a href="#"></li>
+            <li class="item h3"><a href="#"></li>
+            <li class="item h2"><a href="#"></li>
+            <li class="item h2"><a href="#"></li>
+            <li class="item h0"><a href="#"></li>
+            <li class="item h2"><a href="#"></li>
+            <li class="item h0"><a href="#"></li>
+            <li class="item h1"><a href="#"></li>
+            <li class="item h0"><a href="#"></li>
+            <li class="item h2"><a href="#"></li>
+            <li class="item h0"><a href="#"></li>
+            <li class="item h2"><a href="#"></li>
+            <li class="item h1"><a href="#"></li>
+        </ul>
+    </div>
+    <script>
+        waterfull()
+        $(window).resize(function(){
+        waterfull()
+        })
+        //页面大小调整，可以随之宽度再做改变
+        function waterfull(){
+        var arrcount=parseInt($('.container').width()/$('.item').width())
+        var itmeArr=[]
+        for(var i=0;i<arrcount;i++){
+            itmeArr[i]=0
+        }
+        console.log(itmeArr)
+        $('.item').each(function(){
+            var minValue=Math.min.apply(null,itmeArr)
+            var minIndex=itmeArr.indexOf(minValue)
+            console.log(minValue)
+            console.log(minIndex)
+            $(this).css({
+            top:itmeArr[minIndex],
+            left: $(this).outerWidth(true) * minIndex
+            })
+            // console.log(top)
+            // console.log(left)
+            itmeArr[minIndex] += $(this).outerHeight(true)
+        })
+        }
+    </script>
+</body>
+</html>

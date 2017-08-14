@@ -1,0 +1,70 @@
+ul,li{
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+*{
+  box-sizing: border-box;
+
+}
+#container{
+  width:800px;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+.clearfix:after{
+  content: '';
+  clear: both;
+  display: block;
+}
+#container .top>li{
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  float: left;
+  line-height: 30px;
+  height: 30px;
+  text-align: center;
+  color: #333;
+  width: 33.33333333%;
+  color: blue;
+  cursor: pointer;
+}
+#container .top>li:last-child{
+  border-right: 1px solid #ccc;
+}
+#container .wrap{
+  height: 120px;
+  overflow: hidden;
+  position: relative;
+}
+#container .content{
+  position: absolute;
+  /*top:-240px;*/
+}
+#container .content>li{
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  height: 120px;
+  padding: 20px;
+  width: 800px;
+  /*display: none;*/
+  /*position: absolute;*/
+}
+#container .content>li:nth-child(1){
+  background-color: blue;
+}
+#container .content>li:nth-child(2){
+  background-color: red;
+}
+#container .content>li:nth-child(3){
+  background-color: green;
+}
+.top>li.active{
+  background-color:gray;
+  color:red;
+}
+/*#container .content>li.hover{ /*这里让我体会了什么叫做CSS先有，然后jquery才来跟进。这里要同样的定位，定位到li*/
+/*display: block;*/
+/*}*/

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./layzeloading.css">
+    <title>懒加载的实现</title>
+</head>
+
+<body>
+    <div id="container" class="clearfix">
+        <ul class="pic">
+            <li><a href="#"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270348&di=5a1457192eb4e3659f64b4152def0639&imgtype=jpg&er=1&src=http%3A%2F%2Fimg3.redocn.com%2Ftupian%2F20151217%2Fkongbaineirongtupian_5607095.jpg" 
+            data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270291&di=8fd2bf939c2a4235aa73496d53f03da4&imgtype=jpg&er=1&src=http%3A%2F%2Ft1.niutuku.com%2F190%2F14%2F14-117639.jpg" alt="loading..."></a></li>
+            <li><a href="#"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270348&di=5a1457192eb4e3659f64b4152def0639&imgtype=jpg&er=1&src=http%3A%2F%2Fimg3.redocn.com%2Ftupian%2F20151217%2Fkongbaineirongtupian_5607095.jpg" 
+            data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270291&di=8fd2bf939c2a4235aa73496d53f03da4&imgtype=jpg&er=1&src=http%3A%2F%2Ft1.niutuku.com%2F190%2F14%2F14-117639.jpg" alt="loading..."></a></li>
+            <li><a href="#"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270348&di=5a1457192eb4e3659f64b4152def0639&imgtype=jpg&er=1&src=http%3A%2F%2Fimg3.redocn.com%2Ftupian%2F20151217%2Fkongbaineirongtupian_5607095.jpg" 
+            data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270291&di=8fd2bf939c2a4235aa73496d53f03da4&imgtype=jpg&er=1&src=http%3A%2F%2Ft1.niutuku.com%2F190%2F14%2F14-117639.jpg" alt="loading..."></a></li>
+            <li><a href="#"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270348&di=5a1457192eb4e3659f64b4152def0639&imgtype=jpg&er=1&src=http%3A%2F%2Fimg3.redocn.com%2Ftupian%2F20151217%2Fkongbaineirongtupian_5607095.jpg" 
+            data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270291&di=8fd2bf939c2a4235aa73496d53f03da4&imgtype=jpg&er=1&src=http%3A%2F%2Ft1.niutuku.com%2F190%2F14%2F14-117639.jpg" alt="loading..."></a></li>
+            <li><a href="#"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270348&di=5a1457192eb4e3659f64b4152def0639&imgtype=jpg&er=1&src=http%3A%2F%2Fimg3.redocn.com%2Ftupian%2F20151217%2Fkongbaineirongtupian_5607095.jpg" 
+            data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270291&di=8fd2bf939c2a4235aa73496d53f03da4&imgtype=jpg&er=1&src=http%3A%2F%2Ft1.niutuku.com%2F190%2F14%2F14-117639.jpg" alt="loading..."></a></li>
+            <li><a href="#"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270348&di=5a1457192eb4e3659f64b4152def0639&imgtype=jpg&er=1&src=http%3A%2F%2Fimg3.redocn.com%2Ftupian%2F20151217%2Fkongbaineirongtupian_5607095.jpg" 
+            data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270291&di=8fd2bf939c2a4235aa73496d53f03da4&imgtype=jpg&er=1&src=http%3A%2F%2Ft1.niutuku.com%2F190%2F14%2F14-117639.jpg" alt="loading..."></a></li>
+            <li><a href="#"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270348&di=5a1457192eb4e3659f64b4152def0639&imgtype=jpg&er=1&src=http%3A%2F%2Fimg3.redocn.com%2Ftupian%2F20151217%2Fkongbaineirongtupian_5607095.jpg" 
+            data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270291&di=8fd2bf939c2a4235aa73496d53f03da4&imgtype=jpg&er=1&src=http%3A%2F%2Ft1.niutuku.com%2F190%2F14%2F14-117639.jpg" alt="loading..."></a></li>
+            <li><a href="#"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270348&di=5a1457192eb4e3659f64b4152def0639&imgtype=jpg&er=1&src=http%3A%2F%2Fimg3.redocn.com%2Ftupian%2F20151217%2Fkongbaineirongtupian_5607095.jpg" 
+            data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270291&di=8fd2bf939c2a4235aa73496d53f03da4&imgtype=jpg&er=1&src=http%3A%2F%2Ft1.niutuku.com%2F190%2F14%2F14-117639.jpg" alt="loading..."></a></li>
+            <li><a href="#"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270348&di=5a1457192eb4e3659f64b4152def0639&imgtype=jpg&er=1&src=http%3A%2F%2Fimg3.redocn.com%2Ftupian%2F20151217%2Fkongbaineirongtupian_5607095.jpg" 
+            data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270291&di=8fd2bf939c2a4235aa73496d53f03da4&imgtype=jpg&er=1&src=http%3A%2F%2Ft1.niutuku.com%2F190%2F14%2F14-117639.jpg" alt="loading..."></a></li>
+            <li><a href="#"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270348&di=5a1457192eb4e3659f64b4152def0639&imgtype=jpg&er=1&src=http%3A%2F%2Fimg3.redocn.com%2Ftupian%2F20151217%2Fkongbaineirongtupian_5607095.jpg" 
+            data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270291&di=8fd2bf939c2a4235aa73496d53f03da4&imgtype=jpg&er=1&src=http%3A%2F%2Ft1.niutuku.com%2F190%2F14%2F14-117639.jpg" alt="loading..."></a></li>
+            <li><a href="#"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270348&di=5a1457192eb4e3659f64b4152def0639&imgtype=jpg&er=1&src=http%3A%2F%2Fimg3.redocn.com%2Ftupian%2F20151217%2Fkongbaineirongtupian_5607095.jpg" 
+            data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270291&di=8fd2bf939c2a4235aa73496d53f03da4&imgtype=jpg&er=1&src=http%3A%2F%2Ft1.niutuku.com%2F190%2F14%2F14-117639.jpg" alt="loading..."></a></li>
+            <li><a href="#"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270348&di=5a1457192eb4e3659f64b4152def0639&imgtype=jpg&er=1&src=http%3A%2F%2Fimg3.redocn.com%2Ftupian%2F20151217%2Fkongbaineirongtupian_5607095.jpg" 
+            data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270291&di=8fd2bf939c2a4235aa73496d53f03da4&imgtype=jpg&er=1&src=http%3A%2F%2Ft1.niutuku.com%2F190%2F14%2F14-117639.jpg" alt="loading..."></a></li>
+            <li><a href="#"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270348&di=5a1457192eb4e3659f64b4152def0639&imgtype=jpg&er=1&src=http%3A%2F%2Fimg3.redocn.com%2Ftupian%2F20151217%2Fkongbaineirongtupian_5607095.jpg" 
+            data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270291&di=8fd2bf939c2a4235aa73496d53f03da4&imgtype=jpg&er=1&src=http%3A%2F%2Ft1.niutuku.com%2F190%2F14%2F14-117639.jpg" alt="loading..."></a></li>
+            <li><a href="#"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270348&di=5a1457192eb4e3659f64b4152def0639&imgtype=jpg&er=1&src=http%3A%2F%2Fimg3.redocn.com%2Ftupian%2F20151217%2Fkongbaineirongtupian_5607095.jpg" 
+            data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270291&di=8fd2bf939c2a4235aa73496d53f03da4&imgtype=jpg&er=1&src=http%3A%2F%2Ft1.niutuku.com%2F190%2F14%2F14-117639.jpg" alt="loading..."></a></li>
+            <li><a href="#"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270348&di=5a1457192eb4e3659f64b4152def0639&imgtype=jpg&er=1&src=http%3A%2F%2Fimg3.redocn.com%2Ftupian%2F20151217%2Fkongbaineirongtupian_5607095.jpg" 
+            data-src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498270291&di=8fd2bf939c2a4235aa73496d53f03da4&imgtype=jpg&er=1&src=http%3A%2F%2Ft1.niutuku.com%2F190%2F14%2F14-117639.jpg" alt="loading..."></a></li>
+        </ul>
+    </div>
+    <script>
+        layzeRender()
+        var close
+        $(window).on('scroll', function () {
+            if (close) {
+                clearTimeout(close);
+            }
+            close = setTimeout(function () {
+                layzeRender()
+                //     console.log(111)
+            }, 100)
+        })
+
+        function layzeRender() {
+            $('img').each(function () {
+                if (isShow($(this)) && !isloaded($(this))) {
+                    //       console.log('i am here')
+                    loadimg($(this))
+                }
+            })
+        }
+
+        function isShow($img) {
+            var windowHeight = $(window).height();
+            var scrollHeight = $(window).scrollTop();
+            var offsetTop = $img.offset().top;
+            if (offsetTop < windowHeight + scrollHeight && offsetTop > scrollHeight) {
+                return true;
+            }
+            return false;
+        }
+
+        function isloaded($img) {
+            return $img.attr('src') === $img.attr('data-src')
+        }
+
+        function loadimg($img) {
+            return $img.attr('src', $img.attr('data-src'))
+        }
+    </script>
+</body>
+
+</html>

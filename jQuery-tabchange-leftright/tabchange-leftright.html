@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../jquery-3.2.1.min.js"></script>
+    <title>tab切换左右滑动-使用jquery</title>
+    <link rel="stylesheet" type="text/css" href="./tabchange-leftright.css">
+</head>
+<body>
+    <div id="container">
+        <ul class="top clearfix">
+            <li class="active">标题1</li>
+            <li>标题2</li>
+            <li>标题3</li>
+        </ul>
+        <div class="wrap clearfix">
+            <ul class="content clearfix">
+                <li>内容1</li>
+                <li>内容2</li>
+                <li>内容3</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        var $list=$('#container .top>li');
+        $list.on('click',function(){
+        var $this=$(this);
+        var index=$this.index();
+        var movewidth=$('#container .wrap').width();
+        $this.addClass('active').siblings().removeClass('active');
+        $this.parents('#container').find('.content')
+            .animate({left:-movewidth*index});
+        // .eq(index).addClass('hover').siblings().removeClass('hover');
+        })
+    </script>
+    
+</body>
+</html>

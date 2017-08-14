@@ -1,0 +1,126 @@
+*{
+  box-sizing:border-box;
+}
+body {
+  font: 12px/150% Arial,Verdana,"\5b8b\4f53";
+  color: #666;
+}
+ul,li{
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+
+#container{
+  border:1px solid #ccc;
+  width:800px;
+  margin:0 auto;
+  margin-top:30px;
+}
+
+.clearfix:after{
+  content:'';
+  clear:both;
+  display:block;
+
+}
+
+#container .content{
+  /*margin:0px 0px 10px 20px;*/
+  /*border:1px solid #ccc;*/
+  width: 800px;
+}
+
+#container h1{
+  margin-left: 30px;
+}
+
+
+.content>li{
+  position:relative;
+  width:220px;
+  /* margin:0px 0px 30px 0px; */
+  height:220px;
+  border:1px solid #ccc;
+  float:left;
+  margin-left:30px;
+  margin-bottom:30px;
+
+}
+/*.content>li:nth-child(2),.content>li:nth-child(5){
+margin:0px 40px 0px 40px;
+}*/
+.content>li a{
+  text-decoration:none;
+  color:#666;
+
+}
+
+#container .addstuff{
+  border: 1px solid #c81623;
+  color: #c81623;
+  padding: 10px 15px;
+  border-radius: 3px;
+  text-align: center;
+  background: #fff;
+  text-decoration: none;
+  margin:0px 0px 10px 30px;
+  display: inline-block;
+  width: 60px;
+}
+
+.content>li .pic{
+  display:block;
+  margin:0 auto;
+}
+.content>li .sellname{
+  display:block;
+  height: 36px;
+  text-align: left;
+  font-weight: normal;
+  font-size: 12px;
+  color: #666;
+  margin: 20px 0px 0px 20px;
+}
+.content>li .price{
+  display:block;
+  text-align: left;
+  color: #c81623;
+  margin-left: 20px;
+}
+
+.content>li .motai{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width:220px;
+  height:220px;
+  background-color:rgba(0,0,0, 0.3);
+  transition: all 0.3s;
+  opacity:0;
+
+}
+.content>li.change .motai{
+  opacity:1;
+}
+/*比较这两者的区别，先基于要做事件代理的写法，改成这样。就把重心放在li上。*/
+
+/*.content>li .motai.change{
+opacity:1;
+}*/
+
+.content>li .motai .btn{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  border: 1px solid #c81623;
+  color: #c81623;
+  padding: 10px 15px;
+  border-radius: 3px;
+  text-align: center;
+  background: #fff;
+  cursor: pointer;
+}

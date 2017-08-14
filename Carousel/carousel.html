@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./carousel.css">
+    <title>轮播的实现</title>
+</head>
+<body>
+    <div id="container">
+        <ul class="pics">
+            <li id="0"><a href="#"><img src="./img/banner.jpg" alt=""></a></li>
+            <li id="1"><a href="#"><img src="./img/pic01.jpg" alt=""></a></li>
+            <li id="2"><a href="#"><img src="./img/pic02.jpg" alt=""></a></li>
+            <li id="3"><a href="#"><img src="./img/pic03.jpg" alt=""></a></li>
+        </ul>
+        <a href="#" class="next arrow">></a>
+        <a href="#" class="pre arrow"><</a>
+        <ul class="tips">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        var $preBtn=$('.arrow.pre');
+        var $nextBtn=$('.arrow.next');
+        var list=$('#container .pics>li');
+        var imgWidth=$('img').width();
+        var listCount=list.length;
+        var $imgCt=$('.pics');
+        var pageIndex=0;
+        var $tipsBtn=$('.tips>li');
+        var isAminate=false;
+        $imgCt.css({left:-imgWidth})
+        $imgCt.append(list.first().clone());
+        $imgCt.prepend(list.last().clone());
+        $imgCt.width((listCount+2)*imgWidth);
+        $preBtn.on('click',function(){
+        playPre(1)
+        })
+        $nextBtn.on('click',function(){
+        playNext(1)
+        })
+        $tipsBtn.on('click',function(){
+        var index=$(this).index();
+        if(index>pageIndex){
+            playNext(index-pageIndex);
+        }else if(index<pageIndex){
+            playPre(pageIndex-index);
+        }
+        console.log(index);
+        })
+        function playNext(len){
+        if(isAminate) return;
+        isAminate=true;
+        $imgCt.animate({left:'-='+len*imgWidth},function(){
+            pageIndex +=len;
+            // pageIndex++;
+            if(pageIndex==listCount){
+            pageIndex=0;
+            $imgCt.css({left:-imgWidth});
+            }
+            console.log(pageIndex);
+            tipsShow()
+            isAminate=false;
+        });   
+        }
+        function playPre(len){
+        if(isAminate) return;
+        isAminate=true;
+        $imgCt.animate({left:'+='+len*imgWidth},function(){
+            pageIndex -=len;
+            // pageIndex--;
+            if(pageIndex<0){
+            pageIndex=listCount-1;
+            $imgCt.css({left:-imgWidth*listCount});
+
+            }
+            console.log(pageIndex);  
+            tipsShow() 
+            isAminate=false;
+        });
+        }
+        function tipsShow(){
+        $tipsBtn.removeClass('active').eq(pageIndex).addClass('active');
+        }
+    </script>
+</body>
+</html>

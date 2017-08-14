@@ -1,0 +1,23 @@
+ul,li{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#container{
+  width:1000px;
+  margin: 0 auto;
+  border:1px solid red;
+}
+img{
+  width: 300px;
+  height: 300px;
+  border:1px solid #333;
+  margin-left: 25px;
+  margin-top: 25px;
+  float: left;
+}
+.clearfix:after{
+  content:'';
+  clear: both;
+  display: block;
+}

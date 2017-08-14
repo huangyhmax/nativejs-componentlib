@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./hover-modalbox.css">
+    <title>购物商品添加-使用jquery-事件代理的写法</title>
+</head>
+<body>
+    <div id="container">
+        <h1>珠宝首饰</h1>
+        <div class="session">
+            <ul class="content clearfix">
+                <li>
+                  <div class="motai"><a href="#" class="btn">立即抢购</a></div>
+                  <a class="panel" href="#">
+                    <img class="pic" src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+                    <span class="sellname">藏美田玉金镶玉路路通吊坠</span>
+                    <span class="price">￥1799.00</span>
+                  </a>
+              </li>
+              <li>
+                  <div class="motai"><a href="#" class="btn">立即抢购</a></div>
+                  <a class="panel" href="#">
+                    <img class="pic" src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+                    <span class="sellname">藏美田玉金镶玉路路通吊坠</span>
+                    <span class="price">￥1799.00</span>
+                  </a>
+              </li>
+              <li>
+                  <div class="motai"><a href="#" class="btn">立即抢购</a></div>
+                  <a class="panel" href="#">
+                    <img class="pic" src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+                    <span class="sellname">藏美田玉金镶玉路路通吊坠</span>
+                    <span class="price">￥1799.00</span>
+                  </a>
+              </li>
+              <li>
+                  <div class="motai"><a href="#" class="btn">立即抢购</a></div>
+                  <a class="panel" href="#">
+                    <img class="pic" src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+                    <span class="sellname">藏美田玉金镶玉路路通吊坠</span>
+                    <span class="price">￥1799.00</span>
+                  </a>
+              </li>
+              <li>
+                  <div class="motai"><a href="#" class="btn">立即抢购</a></div>
+                  <a class="panel" href="#">
+                    <img class="pic" src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+                    <span class="sellname">藏美田玉金镶玉路路通吊坠</span>
+                    <span class="price">￥1799.00</span>
+                  </a>
+              </li>
+              <li>
+                  <div class="motai"><a href="#" class="btn">立即抢购</a></div>
+                  <a class="panel" href="#">
+                    <img class="pic" src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+                    <span class="sellname">藏美田玉金镶玉路路通吊坠</span>
+                    <span class="price">￥1799.00</span>
+                  </a>
+              </li>
+            </ul>
+        </div>
+        <a href="#" class="addstuff"><span>添加</span></a>
+    </div>
+    <script>
+        var products = [
+        {
+            img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+            name: '珂兰 黄金手 猴哥款',
+            price: '￥405.00'
+        },{
+            img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+            name: '珂兰 黄金转运珠 猴哥款',
+            price: '￥100.00'
+        },{
+            img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+            name: '珂兰 黄金手链 3D猴哥款',
+            price: '￥45.00'
+        }
+        ];
+
+
+        function getLiHtml(prod){
+        var html = '';
+        html += '<li>';
+        html +=   '<div class="motai"><a href="#" class="btn">立即抢购</a></div>'
+        html +=    '<a class="panel" href="#">'
+        html +=      '<img class="pic" src="'+prod.img+'">'
+        html +=      '<span class="sellname">'+prod.name+'</span>'
+        html +=      '<span class="price">'+prod.price+'</span>'
+        html +=    '</a>'
+        html += '</li>';
+        return html;
+        }
+
+
+        $('.addstuff').on('click', function(e){
+        e.preventDefault();
+        $.each(products, function(idx, prod){
+            var html = getLiHtml(prod);
+            $('.content').append(html);
+        });
+        });
+
+        //事件代理的写法，获取dom位置到ul这个父节点上
+        $('.content').on('mouseenter','li', function(){
+        $(this).addClass('change').siblings()
+            .removeClass('change');
+        });
+        $('.content').on('mouseleave','li', function(){
+        $(this).removeClass('change');
+        });
+
+        //下面这种写法是获取dom位置到li节点上,这样新增的li就没有模态框的切换效果
+        // var $contentlist=$('.content>li')
+
+        // $contentlist.on('mouseenter',function(){
+        // console.log(1);
+        // $(this).addClass('change').siblings()
+        //        .removeClass('change');
+        // })
+        // $contentlist.on('mouseleave',function(){
+        // console.log(2);
+        // $(this).removeClass('change');
+        // })
+    </script>   
+</body>
+</html>
